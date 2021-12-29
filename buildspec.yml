@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - docker login -u karloskelvin -p 75233520-89b0-43f6-9265-0b54bc3c3a2c
+    runtime-version:
+      java: corretto11
+      docker: 19
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn clean package
+
+artifacts:
+  files:
+    - service/target/*.jar
+  discard-paths: yes
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
